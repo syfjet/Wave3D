@@ -1,0 +1,55 @@
+@startuml
+title Wave
+scale 1000 width
+skinparam classFontColor automatic
+skinparam classHeaderBackgroundColor #444
+
+
+package "OBJECT" {
+    Node
+    {}
+    class SEGMENT
+    {}
+    class CELL
+    {}
+}
+
+class classB{
+test()
+}
+class classC{
+test()
+}
+@enduml
+
+// : **public**\n double U\n double parts
+
+
+CELL -right-> LIMITS_EXCEED
+
+
+CELL -down-> LIMITS_OK: Лимиты пройдены
+LIMITS_OK -down-> WAITING_SMS_CONFIRMATION: Ожидаем sms подтверждение
+WAITING_SMS_CONFIRMATION -down-> READY: Можно отправлять в платежную систему
+READY -down-> SENT_TO_PAYSYSTEM: Платеж зарегистирован в платежной системе
+READY -down-> DECLINED_BY_PAYSYSTEM: Платеж отклонен
+SENT_TO_PAYSYSTEM -down-> PAID
+
+OBJECT :
+CELL :
+NODE :
+SEGMENT :
+
+GEOMETRY :
+SOLVER :
+
+OUT :
+
+CELL -down-> OBJECT
+NODE -down-> OBJECT
+SEGMENT -down-> OBJECT
+OBJECT -down-> SOLVER
+OBJECT -left-> GEOMETRY
+GEOMETRY -down-> SOLVER
+OUT -down-> SOLVER
+OBJECT -left-> OUT

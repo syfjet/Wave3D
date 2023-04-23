@@ -1,0 +1,45 @@
+#START_INPUT#
+MESH
+mesh/sh.mesh
+END_MESH
+
+TIME
+print_slide   write_slide end_time  dt
+10   100              1e-1    1e-5
+END_TIME
+
+METRIC
+1e-2
+END_METRIC
+
+BOUNDARY
+num
+0
+END_BOUNDARY
+
+INITIAL
+num
+1
+parts   v beta
+1       1   0
+END_INITIAL
+
+SOURCE
+num
+1
+volume_rectangle
+x0 y0 z0 R1 R2 R3 Amplitude omega
+0 0 0 0.01 0.01 0.00041 1   1000
+END_SOURCE
+
+#END_INPUT#
+
+
+!
+!part
+! number
+!
+! x0 y0 z0 x y z S
+!volume_ellipse
+!x0 y0 z0 R1 R2 R3 S
+!0 0 0 0.002 0.002 0.002 1
