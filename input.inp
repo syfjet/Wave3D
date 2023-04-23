@@ -1,6 +1,6 @@
 #START_INPUT#
 MESH
-mesh/sh.mesh
+mesh/cube.mesh
 END_MESH
 
 TIME
@@ -34,12 +34,3 @@ END_SOURCE
 
 #END_INPUT#
 
-
-!
-!part
-! number
-!
-! x0 y0 z0 x y z S
-!volume_ellipse
-!x0 y0 z0 R1 R2 R3 S
-!0 0 0 0.002 0.002 0.002 1
