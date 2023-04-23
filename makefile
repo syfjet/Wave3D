@@ -4,13 +4,13 @@ CC = g++
 CFLAGS = -Ofast -fopenmp
 
 SOURCES = \
-src/construction_mesh.cpp \
-src/geometry.cpp \
-src/read_input_file.cpp \
-src/boundary.cpp \
-src/equation.cpp \
-src/solver.cpp \
-src/out.cpp \
+src/reader/construction_mesh.cpp \
+src/reader/read_input_file.cpp \
+src/boundary/boundary.cpp \
+src/solver/geometry.cpp \
+src/solver/equation.cpp \
+src/solver/solver.cpp \
+src/paraview/out.cpp \
 src/main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
