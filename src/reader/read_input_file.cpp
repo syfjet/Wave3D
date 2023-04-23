@@ -33,8 +33,7 @@ void Read_input_file::read(string input_file,Object &obj, Numerical &numer)
 			{	
 				in >> numer.metric;
 				in >> text;
-				Read_input_file::error(text, "METRIC"); 	
-				cout << numer.metric << endl;		
+				Read_input_file::error(text, "METRIC"); 			
 				for (int i = 0; i < obj.node.size(); ++i)
 				{
 					obj.node[i].coordinate[0] = obj.node[i].coordinate[0]*numer.metric;
