@@ -12,16 +12,16 @@ int main()
 {
 string name_file;
 
-	Object obj;
-	Numerical numer;
+    Object obj;
+    Numerical numer;
 
-	Read_input_file *read_file = new Read_input_file;
-	cin >> name_file;
- 	read_file->read(name_file,obj,numer); 
- 	delete read_file;
+    Read_input_file *read_file = new Read_input_file;
+    cin >> name_file;
+    read_file->read(name_file,obj,numer); 
+    delete read_file;
 
-	Solver solve;
-	solve.wave(obj,numer);
+    Solver solve;
+    solve.wave(obj,numer);
 
-	return 0;		
+    return 0;       
 } 
