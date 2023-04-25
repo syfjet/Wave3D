@@ -55,45 +55,40 @@ void Construction_mesh::cell_connection(Object &obj)
 
 void Construction_mesh::orientation_cell_cell(int index,int (&connection)[4], int (&index_node)[4], int (&index_node_contact_cell)[4])
 {
+	auto posit
+	{
+		[](int ind, int &index, int (&pos)[4], int (&connection)[4],int &flag)
+		{
+            ++pos[ind];
+            if (pos[ind] == 3)
+            {
+                connection[ind] = index;
+                flag = 1;
+            }			
+		}
+	};
+
     int pos[] = {0,0,0,0};
+    int flag = 0;
 	for (int i = 0; i < 4;++i)
 	{
         if (index_node[0] == index_node_contact_cell[i] || index_node[1] == index_node_contact_cell[i] || index_node[2] == index_node_contact_cell[i])
         {
-            ++pos[0];
-            if (pos[0] == 3)
-            {
-                connection[0] = index;
-                break;
-            }
+        	posit(0,index,pos,connection,flag);
         }
         if (index_node[0] == index_node_contact_cell[i] || index_node[1] == index_node_contact_cell[i] || index_node[3] == index_node_contact_cell[i])
         {
-            ++pos[1];
-            if (pos[1] == 3)
-            {
-                connection[1] = index;
-                break;
-            }
+			posit(1,index,pos,connection,flag);
         }
         if (index_node[0] == index_node_contact_cell[i] || index_node[2] == index_node_contact_cell[i] || index_node[3] == index_node_contact_cell[i])
         {
-            ++pos[2];
-            if (pos[2] == 3)
-            {
-                connection[2] = index;
-                break;
-            }
+			posit(2,index,pos,connection,flag);
         }
         if (index_node[1] == index_node_contact_cell[i] || index_node[2] == index_node_contact_cell[i] || index_node[3] == index_node_contact_cell[i])
         {
-            ++pos[3];
-            if (pos[3] == 3)
-            {
-                connection[3] = index;
-                break;
-            }
+			posit(3,index,pos,connection,flag);
         }
+        if (flag == 1){break;}
 	}
 }
 
