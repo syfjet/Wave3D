@@ -34,7 +34,7 @@ obj.cell[i].U_new = 2.*obj.cell[i].U-obj.cell[i].U_old + obj.cell[i].v*obj.cell[
 
 if (obj.cell[i].source > 0)
 {
-    obj.cell[i].U_new += obj.cell[i].source*sin(obj.cell[i].omega*numer.time);  
+    obj.cell[i].U_new += obj.cell[i].source*sin(obj.cell[i].omega*numer.time)*numer.dt;  
 }
 }
 

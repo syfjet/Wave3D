@@ -40,12 +40,12 @@ void Out::out_paraview(Object &obj, Numerical &numer)
             }   
             out << "</DataArray>"<<"\n";
 
-            // out << "<DataArray type='Float64' Name='Parts' format='ascii'>"<<"\n";
-            // for (int i = 0;i<obj.cell.size();++i)
-            // {
-            //  out << obj.cell[i].part<<"\n";
-            // }    
-            // out << "</DataArray>"<<"\n";
+            out << "<DataArray type='Float64' Name='Parts' format='ascii'>"<<"\n";
+            for (int i = 0;i<obj.cell.size();++i)
+            {
+             out << obj.cell[i].part<<"\n";
+            }    
+            out << "</DataArray>"<<"\n";
 
             // out << "<DataArray type='Float64' Name='Source' format='ascii'>"<<"\n";
             // for (int i = 0;i<obj.cell.size();++i)

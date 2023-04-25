@@ -5,5 +5,4 @@ src/reader/*.o
 src/solver/*.o
 src/*.o
 mesh/
-pic/
 wave_3d
