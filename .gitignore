@@ -1,4 +1,3 @@
-results/
 src/boundary/*.o
 src/paraview/*.o
 src/reader/*.o
