@@ -10,7 +10,7 @@ public:
 	public:
 		int n_node = 0;
 		int part = 0;
-		vector<double> coordinate;	
+		double coordinate[3];	
 		vector<int> connection;	
 	protected:
 	private:				
@@ -22,7 +22,7 @@ public:
 		int n_segment = 0;
 		int cell = 0;
 		int part = 0;
-		vector<int> index_node;	
+		int index_node[3];	
 		int type = 0;
 	protected:
 	private:					

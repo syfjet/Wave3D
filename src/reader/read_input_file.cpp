@@ -153,13 +153,11 @@ void Read_input_file::read(string input_file,Object &obj, Numerical &numer)
                             double xc = 0, yc = 0, zc = 0, omega = 0;
 
                             int part = 0;
+                            in >> text >> text >> text;
                             in >> part >> source >> omega;
 
                             for (int i = 0; i < obj.cell.size(); ++i)
                             {
-                                xc = 0.25*(obj.node[obj.cell[i].index_node[0]].coordinate[0]+obj.node[obj.cell[i].index_node[1]].coordinate[0]+obj.node[obj.cell[i].index_node[2]].coordinate[0]+obj.node[obj.cell[i].index_node[3]].coordinate[0]);
-                                yc = 0.25*(obj.node[obj.cell[i].index_node[0]].coordinate[1]+obj.node[obj.cell[i].index_node[1]].coordinate[1]+obj.node[obj.cell[i].index_node[2]].coordinate[1]+obj.node[obj.cell[i].index_node[3]].coordinate[1]);
-                                zc = 0.25*(obj.node[obj.cell[i].index_node[0]].coordinate[2]+obj.node[obj.cell[i].index_node[1]].coordinate[2]+obj.node[obj.cell[i].index_node[2]].coordinate[2]+obj.node[obj.cell[i].index_node[3]].coordinate[2]);
 
                                 if (obj.cell[i].part == part)
                                 {
@@ -255,7 +253,7 @@ void Read_input_file::read_mesh(Object &obj)
                     for (int j = 0; j < 4; ++j)
                     {   
                         in >> _node;
-                        if (j < 3){obj.node[i].coordinate.push_back(_node);}
+                        if (j < 3){obj.node[i].coordinate[j] = _node;}
                         if (j == 3){obj.node[i].part = _node;}
                     }
                 }
@@ -274,7 +272,7 @@ void Read_input_file::read_mesh(Object &obj)
                     for (int j = 0; j < 4; ++j)
                     {   
                         in >> _segment;
-                        if (j < 3){obj.segment[i].index_node.push_back(_segment-1);}
+                        if (j < 3){obj.segment[i].index_node[j] = _segment-1;}
                         if (j == 3){obj.segment[i].part = _segment;}
                     }
                 }

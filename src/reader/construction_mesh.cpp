@@ -97,7 +97,7 @@ void Construction_mesh::bound_construct(Object &obj)
     for (int i = 0; i < obj.segment.size();++i) //
     {   
         vector <int> index_cell;
-        for (int j = 0; j < obj.segment[i].index_node.size();++j)
+        for (int j = 0; j < 3;++j)
         {
             for (int k = 0; k < obj.node[obj.segment[i].index_node[j]].connection.size();++k)
             {
@@ -113,7 +113,7 @@ void Construction_mesh::bound_construct(Object &obj)
                 if (index_cell[j] == index_cell[k])
                 {
                     ++pos;
-                    if (pos == obj.segment[i].index_node.size())
+                    if (pos == 3)
                     {
                         obj.segment[i].cell = index_cell[j];
                     }
