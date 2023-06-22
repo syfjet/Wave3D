@@ -17,6 +17,6 @@ protected:
 	void cell_connection(Object &obj);	
 	void bound_construct(Object &obj);		
 private:
-	void orientation_cell_cell(int index,int (&connection)[4], int (&index_node)[4], int (&index_node_contact_cell)[4]);
+	void orientation_cell_cell(int index,array<int,4> &connection, array<int,4> &index_node, array<int,4> &index_node_contact_cell);
 }; 
 

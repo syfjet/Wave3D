@@ -5,17 +5,14 @@ Geometry::~Geometry(){};
 
 void Geometry::G3(int i, Object &obj)
 {   
-    // vector<vector<double>> a = {{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
-    // vector<vector<double>> b = {{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
-    // vector<vector<double>> c = {{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
-    // vector<vector<double>> x = {{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
+    array<array<double,3>,4> a;
+    array<array<double,3>,4> b;
+    array<array<double,3>,4> c;
+    array<array<double,3>,4> x;
 
-    double a[4][3];
-    double b[4][3];
-    double c[4][3];
-    double x[4][3];
+ 
 
-    for (int k = 0; k < 4; ++k)
+    for (int k = 0; k < x.size(); ++k)
     {
         x[k][0] = obj.node[obj.cell[i].index_node[k]].coordinate[0];
         x[k][1] = obj.node[obj.cell[i].index_node[k]].coordinate[1];
@@ -29,7 +26,7 @@ void Geometry::G3(int i, Object &obj)
     Geometry::geometry_volume(i,a,b,c,obj);
 }
 
-void Geometry::geometry_different_point(double (&x)[4][3],double (&a)[4][3],double (&b)[4][3],double (&c)[4][3])
+void Geometry::geometry_different_point(array<array<double,3>,4> &x,array<array<double,3>,4> &a,array<array<double,3>,4> &b,array<array<double,3>,4> &c)
 {
     for (int k = 0; k < 3; ++k)
     {
@@ -51,7 +48,7 @@ void Geometry::geometry_different_point(double (&x)[4][3],double (&a)[4][3],doub
     }
 }
 
-void Geometry::geometry_cell_center_surface(int i, double(&x)[4][3], Object &obj)
+void Geometry::geometry_cell_center_surface(int i, array<array<double,3>,4> &x, Object &obj)
 {
     for (int k = 0; k < 3; ++k)
     {
@@ -64,7 +61,7 @@ void Geometry::geometry_cell_center_surface(int i, double(&x)[4][3], Object &obj
     }
 }
 
-void Geometry::geometry_cell_edge(int i,double(&a)[4][3],double(&b)[4][3],double(&c)[4][3], Object &obj)
+void Geometry::geometry_cell_edge(int i,array<array<double,3>,4> &a,array<array<double,3>,4> &b, array<array<double,3>,4> &c, Object &obj)
 {
     obj.cell[i].edge[0] = sqrt(a[0][0]*a[0][0]+a[0][1]*a[0][1]+a[0][2]*a[0][2]);
     obj.cell[i].edge[1] = sqrt(b[1][0]*b[1][0]+b[1][1]*b[1][1]+b[1][2]*b[1][2]);
@@ -74,7 +71,7 @@ void Geometry::geometry_cell_edge(int i,double(&a)[4][3],double(&b)[4][3],double
     obj.cell[i].edge[5] = sqrt(c[2][0]*c[2][0]+c[2][1]*c[2][1]+c[2][2]*c[2][2]);
 }
 
-void Geometry::geometry_volume(int i,double(&a)[4][3],double(&b)[4][3],double(&c)[4][3], Object &obj)
+void Geometry::geometry_volume(int i,array<array<double,3>,4> &a,array<array<double,3>,4> &b,array<array<double,3>,4> &c, Object &obj)
 {
     obj.cell[i].volume = abs(b[0][0]*(a[0][1]*c[0][2]-a[0][2]*c[0][1])-b[0][1]*(a[0][0]*c[0][2]-a[0][2]*c[0][0])+b[0][2]*(a[0][0]*c[0][1]-a[0][1]*c[0][0]))/6.0;    
 }                           

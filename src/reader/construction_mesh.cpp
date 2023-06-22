@@ -53,11 +53,11 @@ void Construction_mesh::cell_connection(Object &obj)
     cout<<"cell_connection end"<<endl;
 }
 
-void Construction_mesh::orientation_cell_cell(int index,int (&connection)[4], int (&index_node)[4], int (&index_node_contact_cell)[4])
+void Construction_mesh::orientation_cell_cell(int index, array<int,4> &connection, array<int,4> &index_node, array<int,4> &index_node_contact_cell)
 {
     auto posit
     {
-        [](int ind, int &index, int (&pos)[4], int (&connection)[4],int &flag)
+        [](int ind, int &index, int (&pos)[4], array<int,4> &connection,int &flag)
         {
             ++pos[ind];
             if (pos[ind] == 3)
