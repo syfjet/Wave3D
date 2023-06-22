@@ -28,7 +28,7 @@ void Geometry::G3(int i, Object &obj)
 
 void Geometry::geometry_different_point(array<array<double,3>,4> &x,array<array<double,3>,4> &a,array<array<double,3>,4> &b,array<array<double,3>,4> &c)
 {
-    for (int k = 0; k < 3; ++k)
+    for (int k = 0; k < a[0].size(); ++k)
     {
         a[0][k] = x[1][k]-x[0][k];
         b[0][k] = x[2][k]-x[0][k];
@@ -50,7 +50,7 @@ void Geometry::geometry_different_point(array<array<double,3>,4> &x,array<array<
 
 void Geometry::geometry_cell_center_surface(int i, array<array<double,3>,4> &x, Object &obj)
 {
-    for (int k = 0; k < 3; ++k)
+    for (int k = 0; k < obj.cell[i].x_c.size(); ++k)
     {
         obj.cell[i].x_c[k] = 0.25*(x[0][k]+x[1][k]+x[2][k]+x[3][k]); 
 
